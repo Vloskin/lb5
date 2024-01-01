@@ -35,7 +35,14 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="#ffffff" />
+            android:text="#000000" />
+
+        <Button
+            android:id="@+id/changeColorButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="сменить цвет"
+            android:layout_centerInParent="true" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -76,7 +83,8 @@
                 android:id="@+id/radioButton_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="radioButton_1" />
+                android:text="radioButton_1"
+                android:checked="true"/>
 
             <RadioButton
                 android:id="@+id/radioButton_3"
@@ -98,8 +106,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Есть картинка"
-            android:textOff="Есть картинка"
-            android:textOn="Нет картинки" />
+            android:textOff="True"
+            android:textOn="False" />
 
         <ImageView
             android:id="@+id/img"

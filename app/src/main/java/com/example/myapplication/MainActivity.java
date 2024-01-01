@@ -20,9 +20,10 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout background;
     TextView textOut;
     Button btnOk;
-    EditText editText;
+    Button changeColorButton;
+    EditText colorEditText;
     ToggleButton btnToggle;
-    ImageView imgKaban;
+    ImageView image;
     CheckBox redBox;
     CheckBox greenBox;
     CheckBox blueBox;
@@ -36,9 +37,10 @@ public class MainActivity extends AppCompatActivity {
 
         background = (RelativeLayout) findViewById(R.id.background);
         btnOk = (Button) findViewById(R.id.btnOk);
-        editText = (EditText) findViewById(R.id.editText);
+        changeColorButton = (Button) findViewById(R.id.changeColorButton);
+        colorEditText = (EditText) findViewById(R.id.editText);
         btnToggle = (ToggleButton) findViewById(R.id.btnToggle);
-        imgKaban = (ImageView) findViewById(R.id.img);
+        image = (ImageView) findViewById(R.id.img);
         redBox = (CheckBox) findViewById(R.id.redBox);
         greenBox = (CheckBox) findViewById(R.id.greenBox);
         blueBox = (CheckBox) findViewById(R.id.blueBox);
@@ -58,15 +60,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        changeColorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String colorHash = colorEditText.getText().toString();
+                try {
+                    int color = Color.parseColor(colorHash);
+                    background.setBackgroundColor(color);
+                } catch (IllegalArgumentException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
 
 
         btnToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    imgKaban.setVisibility(View.INVISIBLE);
+                    image.setVisibility(View.INVISIBLE);
                 } else {
-                    imgKaban.setVisibility(View.VISIBLE);
+                    image.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -75,11 +90,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.radioButton_1) {
-                    imgKaban.setImageResource(R.drawable.image1);
+                    image.setImageResource(R.drawable.image1);
                 } else if (checkedId == R.id.radioButton_2) {
-                    imgKaban.setImageResource(R.drawable.image2);
+                    image.setImageResource(R.drawable.image2);
                 } else if (checkedId == R.id.radioButton_3) {
-                    imgKaban.setImageResource(R.drawable.image3);
+                    image.setImageResource(R.drawable.image3);
                 }
             }
         });
